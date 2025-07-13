@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx
+    container_name: gateway-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx-config/routes/dsp_routes.conf:/etc/nginx/routes/dsp_routes.conf:ro
+      - ./nginx-config/proxy_params:/etc/nginx/proxy_params:ro
+      - ./nginx-config/cors_proxy.conf:/etc/nginx/cors_proxy.conf:ro
+    restart: unless-stopped
+    networks:
+      - shared-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  shared-network:
+    external: true
