@@ -3,3 +3,5 @@
 
 # Ignore Docker artifacts
 *.log
+# Ignore http authentication files
+.htpasswd
