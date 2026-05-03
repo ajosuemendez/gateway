@@ -5,3 +5,4 @@
 *.log
 # Ignore http authentication files
 .htpasswd
+.htpasswd-admin
